@@ -18,8 +18,10 @@ app.get( '/jokes', function (req, res){
   res.send(jokes);
 });
 
-app.post( '/jokes', function (req res){
+app.post( '/jokes', urlEncodedParser, function (req, res){
   newJoke(req.body);
+  console.log(req.body);
+  console.log(jokes);
   res.send(jokes);
 });
 

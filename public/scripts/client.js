@@ -22,6 +22,10 @@ $( document ).ready( function(){
   $('#submit').on('click', function(event) {
     event.preventDefault();
     var jokeSubmission = {};
+    var fields = $('#submission').serializeArray();
+    fields.forEach(function(element, index, array) {
+      jokeSubmission[element.name] = element.value;
+    });
 
     $.ajax({
       type: 'POST',
@@ -29,6 +33,7 @@ $( document ).ready( function(){
       data: jokeSubmission,
       success: function(){
         console.log("success");
+        //append all jokes
       },
       error: function(error){
         console.log('The "/jokes" ajax post request failed with error: ', error);
