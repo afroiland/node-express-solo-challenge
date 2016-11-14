@@ -1,3 +1,25 @@
+var express = require( 'express' );
+var app = express();
+var bodyParser = require( 'body-parser' );
+var urlEncodedParser = bodyParser.urlencoded( { extended: false } );
+var path = require( 'path' );
+
+var port = process.env.PORT || 3000;
+
+app.listen( port, function(){
+  console.log( 'server up on:', port );
+});
+
+app.get( '/', function( req, res ){
+  res.sendFile( path.resolve( 'views/index.html' ) );
+});
+
+
+
+app.use( express.static( 'public' ) );
+
+
+
 // initial jokes provided by the client
 var jokes = [
   {
