@@ -28,8 +28,6 @@ app.post( '/jokes', urlEncodedParser, function (req, res){
 app.use( express.static( 'public' ) );
 
 
-
-
 function newJoke (data){
   jokes.push(data);
 }
