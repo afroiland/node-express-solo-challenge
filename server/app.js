@@ -14,10 +14,23 @@ app.get( '/', function( req, res ){
   res.sendFile( path.resolve( 'views/index.html' ) );
 });
 
+app.get( '/jokes', function (req, res){
+  res.send(jokes);
+});
 
+app.post( '/jokes', function (req res){
+  newJoke(req.body);
+  res.send(jokes);
+});
 
 app.use( express.static( 'public' ) );
 
+
+
+
+function newJoke (data){
+  jokes.push(data);
+}
 
 
 // initial jokes provided by the client
